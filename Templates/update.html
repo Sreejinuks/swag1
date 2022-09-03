@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'swagApp:update' ob.id %}" method="POST">
+    {% csrf_token %}
+    <h1>Employee details</h1>
+<label for="name">Name</label>
+<input type="text" name="name" value="{{ob.name}}"><br><br>
+<label for="age">Age</label>
+<input type="text" name="age" value="{{ob.age}}"><br><br>
+<label for="designation">Designation</label>
+<select id="designation" name="designation" >
+    <option value="software engineer">Software Engineer</option>
+    <option value="tester">Tester</option>
+    <option value="programmer">Programmer</option>
+    <option value="manager">Manager</option>
+    <option value="assistant">Assistant</option>
+</select><br><br>
+<label for="salary">salary</label>
+<input type="text" name="salary" value="{{ob.salary}}"><br><br>
+    <input type="submit" value="SAVE">
+</form>
+
+
+</body>
+</html>

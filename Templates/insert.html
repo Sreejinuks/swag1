@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'swagApp:register' %}" method="POST">
+    {% csrf_token %}
+    <h1>Employee details</h1>
+<label for="name">Name</label>
+<input type="text" name="name"><br><br>
+<label for="age">Age</label>
+<input type="text" name="age"><br><br>
+<label for="designation">Designation</label>
+<select id="designation" name="designation">
+    <option value="software engineer">Software Engineer</option>
+    <option value="tester">Tester</option>
+    <option value="programmer">Programmer</option>
+    <option value="manager">Manager</option>
+    <option value="assistant">Assistant</option>
+</select><br><br>
+<label for="salary">salary</label>
+<input type="text" name="salary"><br><br>
+    <input type="submit" value="SAVE">
+</form>
+
+# FOR DISPLAY
+<table border="5px" align="center">
+        <tr>
+            <th>name</th>
+            <th>age</th>
+            <th>designation</th>
+            <th>salary</th>
+        </tr>
+        {% for i in ob %}
+        <tr>
+        <td>{{i.name}}</td>
+        <td>{{i.age}}</td>
+        <td>{{i.designation}}</td>
+        <td>{{i.salary}}</td>
+            <td><a href="{% url 'swagApp:update' i.id %}">Update</a></td>
+
+            <td><a href="{% url 'swagApp:delete' i.id %}">Delete</a> </td>
+        </tr>
+        {% endfor %}
+
+
+</table>
+</body>
+</html>
